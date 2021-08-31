@@ -5,25 +5,15 @@ import User from "../user/User";
 import {getPostsUsers} from "../../services/get.posts.users";
 
 export default function Users() {
-
   let [users, setUsers] = useState([]);
-  let [user, setUser] = useState(null);
   let [posts, setPosts] = useState(null)
-
 
   useEffect(() => {
     getUsers().then(value => setUsers([...value]))
   }, []);
 
-  useEffect(() =>{
-        getPostsUsers().then(value => setPosts(value))
-    },[]);
-
 const choseUser = (u) => {
-        setUser({...u});
-
         getPostsUsers(u.id).then(value => setPosts([...value]));
-        getPostsUsers(u.id).then(value => console.log(value));
 }
 
   return (
@@ -42,7 +32,7 @@ const choseUser = (u) => {
 
       </div>
         {
-           posts &&( <div className={'chosen-one'}>{JSON.stringify(posts.id)}</div>)
+           posts && <div className={'chosen-one'}>{JSON.stringify(posts)}</div>
         }
     </div>
   );
