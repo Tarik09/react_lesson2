@@ -15,6 +15,9 @@ export default function Users() {
     getUsers().then(value => setUsers([...value]))
   }, []);
 
+  useEffect(() =>{
+        getPostsUsers().then(value => setPosts(value))
+    },[]);
 
 const choseUser = (u) => {
         setUser({...u});
@@ -39,7 +42,7 @@ const choseUser = (u) => {
 
       </div>
         {
-            user &&( <div className={'chosen-one'}>{JSON.stringify(user.id)}</div>)
+           posts &&( <div className={'chosen-one'}>{JSON.stringify(posts.id)}</div>)
         }
     </div>
   );
