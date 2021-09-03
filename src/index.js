@@ -14,7 +14,7 @@ const reducer = (state= initialState, action) => {
 
     switch (action.type) {
         case LOAD_USERS :
-            return {...state, users: [action.payload]}
+            return {...state, users: [...action.payload]}
         case ADD_USER :
             let newUser = action.payload;
             let newUsersArray = {...state.users, newUser}
@@ -25,8 +25,7 @@ const reducer = (state= initialState, action) => {
 }
 
 let store = createStore(reducer);
-store.dispatch(loadUsers([]));
-store.dispatch(addUser({}));
+
 
 ReactDOM.render(
   <React.StrictMode>
